@@ -1,9 +1,9 @@
 import TAntConfigform from "./config-form";
-import TAntLayoutConditional from "./layout-conditional";
-import TAntLayoutTable from "./layout-table";
+import TAntLayoutConditional from "./layout-conditional"; //
+import TAntLayoutTable from "./layout-table"; //
 import TAntRangePicker from "./range-picker";
-import TAntLayoutForm from "./layout-form";
-import { TAntModal, TAntProtocol } from "./modal";
+import TAntLayoutForm from "./layout-form"; //
+import { TAntModal, TAntProtocol } from "./modal"; //
 
 // 存储组件列表
 const components = [

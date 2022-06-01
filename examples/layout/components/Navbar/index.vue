@@ -6,7 +6,9 @@
       </div>
     </div>
     <div class="right-menu">
-      <el-dropdown class="avatar-container flex-box flex-ver right-menu-item hover-effect">
+      <el-dropdown
+        class="avatar-container flex-box flex-ver right-menu-item hover-effect"
+      >
         <div class="avatar-wrapper">
           <img src="@/assets/img/logo.jpg" class="user-avatar" />
         </div>
@@ -15,19 +17,23 @@
             <el-dropdown-item>首页</el-dropdown-item>
           </router-link>
           <el-dropdown-item>
-            <span style="display:block;" @click="dialogFormVisible = true">修改密码</span>
+            <span style="display: block" @click="dialogFormVisible = true"
+              >修改密码</span
+            >
           </el-dropdown-item>
           <el-dropdown-item divided>
-            <span style="display:block;" @click="logout">退出登录</span>
+            <span style="display: block" @click="logout">退出登录</span>
           </el-dropdown-item>
         </el-dropdown-menu>
       </el-dropdown>
       <div class="link-guide right-menu-item">
         <div class="name">admin</div>
         <div class="line"></div>
-        <div class="ent-name t-oneline-overflow-hidden">{{currentEnt.entName}}</div>
+        <div class="ent-name t-oneline-overflow-hidden">
+          {{ currentEnt.entName }}
+        </div>
       </div>
-      <t-dialog
+      <!-- <t-dialog
         title="修改密码"
         :visible="dialogFormVisible"
         @update:visible="cancel"
@@ -54,83 +60,83 @@
             <el-button type="danger" @click="save">确定</el-button>
           </div>
         </el-form>
-      </t-dialog>
+      </t-dialog> -->
     </div>
   </div>
 </template>
 
 <script>
 export default {
-  data () {
+  data() {
     const validatePass = (rule, value, callback) => {
       if (!value) {
-        callback(new Error('请输入旧密码'))
+        callback(new Error("请输入旧密码"));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     const validatePass1 = (rule, value, callback) => {
       if (!value) {
-        callback(new Error('请输入新密码'))
+        callback(new Error("请输入新密码"));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     const validatePass2 = (rule, value, callback) => {
-      if (value === '') {
-        callback(new Error('请再次输入密码'))
+      if (value === "") {
+        callback(new Error("请再次输入密码"));
       } else if (value !== this.resetForm.newPassword) {
-        callback(new Error('两次输入密码不一致!'))
+        callback(new Error("两次输入密码不一致!"));
       } else {
-        callback()
+        callback();
       }
-    }
+    };
     return {
       dialogFormVisible: false,
       // 重置密码
       resetForm: {
-        oldPassword: '',
-        newPassword: '',
-        repeatNewPassword: ''
+        oldPassword: "",
+        newPassword: "",
+        repeatNewPassword: "",
       },
       resetFormRules: {
         oldPassword: [
-          { required: true, validator: validatePass, trigger: 'blur' }
+          { required: true, validator: validatePass, trigger: "blur" },
         ],
         newPassword: [
-          { required: true, validator: validatePass1, trigger: 'blur' }
+          { required: true, validator: validatePass1, trigger: "blur" },
         ],
         repeatNewPassword: [
-          { required: true, validator: validatePass2, trigger: 'blur' }
-        ]
-      }
-    }
+          { required: true, validator: validatePass2, trigger: "blur" },
+        ],
+      },
+    };
   },
   computed: {
-    currentEnt () {
-      return { entName: '随便取一个名字' }
-    }
+    currentEnt() {
+      return { entName: "随便取一个名字" };
+    },
   },
   methods: {
-    logout () {
-      console.log('点击退出')
+    logout() {
+      console.log("点击退出");
     },
-    reset () {
+    reset() {
       this.resetForm = {
-        oldPassword: '',
-        newPassword: '',
-        repeatNewPassword: ''
-      }
+        oldPassword: "",
+        newPassword: "",
+        repeatNewPassword: "",
+      };
     },
-    cancel () {
-      this.dialogFormVisible = false
+    cancel() {
+      this.dialogFormVisible = false;
     },
     // 保存密码
-    save () {
-      console.log('保存密码')
-    }
-  }
-}
+    save() {
+      console.log("保存密码");
+    },
+  },
+};
 </script>
 
 <style rel="stylesheet/scss" lang="scss" scoped>
